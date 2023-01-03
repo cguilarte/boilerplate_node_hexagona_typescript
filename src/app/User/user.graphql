@@ -1,0 +1,28 @@
+directive @isAuth on FIELD | FIELD_DEFINITION
+    
+scalar Upload
+scalar Date
+
+type resultCreateUser {
+    status: Boolean
+}
+
+type DetailUser {
+    id: ID
+    name: String
+    email: String
+}
+
+input inputCreateUser {
+    name: String
+    email: String
+	password: String
+}
+
+type Query {
+    getInfoUser: DetailUser @isAuth
+}
+
+type Mutation {
+    addUser(data: inputCreateUser) : DetailUser
+}
